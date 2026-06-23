@@ -20,8 +20,8 @@ export default function CinematicEnvironments() {
       id: "parks",
       title: "Water Parks",
       desc: "High-risk family environments",
-      videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-kids-playing-in-a-fountain-with-water-jets-1237-large.mp4",
-      poster: "https://images.unsplash.com/photo-1562920618-97cbe22904eb?q=80&w=2940&auto=format&fit=crop"
+      videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-pool-water-with-ripples-40439-large.mp4",
+      poster: "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=2940&auto=format&fit=crop"
     },
     {
       id: "olympic",
@@ -74,6 +74,7 @@ export default function CinematicEnvironments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: index * 0.12 }}
+              style={{ backgroundImage: `url(${env.poster})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
               className="group relative overflow-hidden rounded-[2.5rem] border border-accent-cyan/15 bg-primary/40 h-[500px] shadow-2xl hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:border-accent-cyan/40 transition-all duration-700 cursor-pointer"
             >
               
