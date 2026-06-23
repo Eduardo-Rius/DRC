@@ -1,137 +1,204 @@
-import { motion } from 'framer-motion';
-import { Activity, Target, ShieldCheck, PlayCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldAlert, Crosshair, Activity, Watch, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
+  const [scene, setScene] = useState(0);
+
+  // 20 Second Loop (5 scenes, 4s each)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScene((prev) => (prev + 1) % 5);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image of a Swimmer */}
-      <div className="absolute inset-0 z-0 bg-primary">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-primary/80 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-transparent to-primary z-10" />
-        <img 
-          src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=2940&auto=format&fit=crop" 
-          alt="Underwater swimmer tracked by AI" 
-          className="w-full h-full object-cover object-center opacity-70 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
-        />
-        
-        {/* Mock AI Targeting Overlay Box directly over the swimmer */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 1.5 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[350px] md:w-[280px] md:h-[450px] border border-accent-cyan/40 bg-accent-cyan/5 rounded z-20 flex flex-col justify-between p-2 shadow-[inset_0_0_20px_rgba(0,217,255,0.1)]"
+    <section className="relative h-screen w-full bg-black overflow-hidden select-none">
+      
+      {/* BASE BACKGROUND VIDEO */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          poster="https://images.unsplash.com/photo-1546022830-671c6d328498?q=80&w=2940&auto=format&fit=crop"
+          className="w-full h-full object-cover opacity-60 mix-blend-luminosity scale-105"
         >
-          {/* Corner brackets */}
-          <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
-          <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
-          <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
-          <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
-          
-          <div className="bg-primary/90 backdrop-blur-md border border-accent-cyan/40 text-[10px] md:text-xs text-accent-cyan px-3 py-1.5 inline-flex rounded w-max font-mono shadow-[0_0_10px_rgba(0,217,255,0.2)] transform -translate-y-8">
-            SWIMMER_ID: 8942
-          </div>
-
-          <div className="flex justify-between mt-auto transform translate-y-8">
-            <div className="bg-accent-blue/20 border border-accent-blue/50 text-accent-cyan text-[10px] px-2 py-1 rounded font-mono">
-              D: 1.8m
-            </div>
-             <div className="bg-accent-green/20 border border-accent-green/50 text-accent-green text-[10px] md:text-xs px-3 py-1.5 rounded font-mono shadow-[0_0_15px_rgba(24,255,138,0.4)]">
-              BIO: NORMAL
-             </div>
-          </div>
-
-          {/* Skeletal tracking points */}
-          <div className="absolute top-[20%] left-[50%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF] -translate-x-1/2" />
-          <div className="absolute top-[40%] left-[30%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF]" />
-          <div className="absolute top-[40%] right-[30%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF]" />
-        </motion.div>
+          {/* Using a placeholder underwater video. Replace with actual cinematic DRC footage */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-swimming-underwater-in-a-pool-2272-large.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      {/* Floating Status Panel */}
-      <motion.div 
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
-        className="hidden lg:flex absolute right-16 top-1/3 flex-col gap-4 z-30"
-      >
-        <div className="glass-panel rounded-xl p-6 flex flex-col gap-5 w-72 border-accent-cyan/20">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <span className="text-xs text-gray-400 font-bold tracking-widest font-mono uppercase">Live Telemetry</span>
-            <div className="w-2.5 h-2.5 rounded-full bg-accent-green animate-pulse shadow-[0_0_10px_rgba(24,255,138,0.6)]" />
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="bg-accent-cyan/10 p-2 rounded-lg">
-              <Target className="text-accent-cyan w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[10px] text-gray-400 font-mono tracking-wider">TRACKING STATUS</p>
-              <p className="text-sm font-bold text-white">Active (99.8% Conf.)</p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="bg-accent-red/10 p-2 rounded-lg">
-              <Activity className="text-accent-red w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[10px] text-gray-400 font-mono tracking-wider">HEART RATE</p>
-              <p className="text-sm font-bold text-white">126 BPM</p>
-            </div>
-          </div>
+      {/* STATIC HEADLINE & SUBHEADLINE (Always visible except in Scene 5) */}
+      <AnimatePresence>
+        {scene !== 4 && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 drop-shadow-2xl">
+              The Moment Before <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">Everything Changes.</span>
+            </h1>
+            <p className="text-xl md:text-3xl text-gray-300 font-light max-w-3xl drop-shadow-lg">
+              DRC gives rescuers the seconds that save lives.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-          <div className="flex items-center gap-4">
-            <div className="bg-accent-blue/10 p-2 rounded-lg">
-              <Activity className="text-accent-blue w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[10px] text-gray-400 font-mono tracking-wider">DEPTH ANALYSIS</p>
-              <p className="text-sm font-bold text-white">2.1 m / Stable</p>
-            </div>
-          </div>
+      {/* SCENE STATE MACHINE OVERLAYS */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        <AnimatePresence mode="wait">
+          
+          {/* SCENE 2: HUD Overlay */}
+          {scene === 1 && (
+            <motion.div
+              key="scene2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0"
+            >
+              {/* HUD Frame */}
+              <div className="absolute inset-8 border border-white/10 rounded-3xl" />
+              <div className="absolute top-12 left-12 flex gap-4">
+                <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-accent-cyan" />
+                  <span className="text-xs font-mono text-white tracking-widest">SCANNING SECTOR 4</span>
+                </div>
+              </div>
+              
+              {/* Target Tracker */}
+              <motion.div 
+                initial={{ scale: 1.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-accent-cyan/40 bg-accent-cyan/5 rounded-full flex items-center justify-center"
+              >
+                <Crosshair className="w-8 h-8 text-accent-cyan opacity-50" />
+                {/* Telemetry data */}
+                <div className="absolute -right-32 top-10 flex flex-col gap-1">
+                  <span className="text-[10px] font-mono text-accent-cyan tracking-widest">OBJ_ID: #4992</span>
+                  <span className="text-[10px] font-mono text-gray-400">KINEMATICS: NOMINAL</span>
+                  <span className="text-[10px] font-mono text-gray-400">DEPTH: 1.2m</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
 
-          <div className="mt-3 bg-accent-green/10 border border-accent-green/30 rounded-lg p-3 flex items-center justify-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-accent-green" />
-            <span className="text-xs font-bold text-accent-green font-mono tracking-wider">SYSTEM OPTIMAL</span>
-          </div>
-        </div>
-      </motion.div>
+          {/* SCENE 3: PREDICTIVE ALERT DETECTED */}
+          {scene === 2 && (
+            <motion.div
+              key="scene3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex items-center justify-center bg-accent-red/20 mix-blend-overlay"
+            >
+              {/* Red Flashing Screen Overlay */}
+              <motion.div 
+                animate={{ opacity: [0.1, 0.4, 0.1] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+                className="absolute inset-0 bg-accent-red mix-blend-color"
+              />
+              <div className="absolute inset-8 border-4 border-accent-red/50 rounded-3xl" />
+              
+              {/* Target Box Red */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-dashed border-accent-red bg-accent-red/10 rounded-lg flex items-end p-2">
+                 <span className="text-xs font-black text-accent-red bg-black/80 px-2 py-1">CRITICAL SUBMERSION</span>
+              </div>
 
-      {/* Main Content */}
-      <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32 lg:pt-0 pointer-events-none">
-        <motion.div 
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl pointer-events-auto"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-blue/10 border border-accent-cyan/30 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(0,107,255,0.15)]">
-            <div className="w-2.5 h-2.5 rounded-full bg-accent-cyan glow-text-cyan animate-pulse" />
-            <span className="text-xs font-bold text-accent-cyan tracking-widest uppercase">Autonomous Aquatic Security</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black text-white leading-[1.1] mb-8 tracking-tight">
-            INTELLIGENCE THAT <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-blue">
-              PROTECTS LIVES.
-            </span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl font-light leading-relaxed">
-            DRC deploys military-grade computer vision and real-time telemetry to mitigate liability, prevent submersions, and orchestrate emergency response across global aquatic environments.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan text-white font-bold text-base hover:shadow-[0_0_40px_rgba(0,217,255,0.4)] hover:scale-[1.02] transition-all duration-300">
-              Request Investor Demo
-            </button>
-            <button className="px-8 py-4 rounded-full bg-secondary/60 border border-white/20 text-white font-semibold text-base flex items-center justify-center gap-3 hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-md group">
-              <PlayCircle className="w-5 h-5 text-accent-cyan group-hover:scale-110 transition-transform" />
-              Watch Platform Overview
-            </button>
-          </div>
-        </motion.div>
+              {/* Massive Alert Text */}
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="absolute bottom-24 flex flex-col items-center gap-2"
+              >
+                <ShieldAlert className="w-16 h-16 text-accent-red animate-bounce" />
+                <h2 className="text-4xl md:text-6xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_20px_rgba(255,59,59,0.8)]">
+                  Predictive Alert Detected
+                </h2>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {/* SCENE 4: Rescuer Reaction */}
+          {scene === 3 && (
+            <motion.div
+              key="scene4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              {/* Haptic Dispatch Simulation */}
+              <div className="absolute top-12 right-12 bg-accent-cyan/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-accent-cyan/30 flex items-center gap-4 shadow-[0_0_40px_rgba(0,217,255,0.2)]">
+                <div className="relative">
+                  <Watch className="w-8 h-8 text-accent-cyan" />
+                  <div className="absolute inset-0 rounded-full bg-accent-cyan animate-ping opacity-50" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs font-mono text-accent-cyan font-bold tracking-widest">HAPTIC DISPATCH SENT</span>
+                  <span className="text-xs font-mono text-white">RESCUER_04 EN ROUTE</span>
+                </div>
+              </div>
+              
+              <div className="w-[300px] h-[300px] rounded-full border border-white/5 bg-white/5 backdrop-blur-sm flex items-center justify-center mt-32">
+                 <div className="flex flex-col items-center text-center gap-2">
+                    <span className="text-sm font-bold text-accent-green tracking-widest">T-MINUS 2 SECONDS</span>
+                    <div className="w-32 h-1 bg-white/20 rounded-full overflow-hidden">
+                       <motion.div 
+                         initial={{ width: "0%" }}
+                         animate={{ width: "100%" }}
+                         transition={{ duration: 4 }}
+                         className="h-full bg-accent-green"
+                       />
+                    </div>
+                 </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* SCENE 5: Successful Rescue / Logo Fade */}
+          {scene === 4 && (
+            <motion.div
+              key="scene5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-primary z-40 flex items-center justify-center"
+            >
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, filter: "blur(10px)" }}
+                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="flex flex-col items-center"
+              >
+                <h1 className="text-7xl md:text-9xl font-black text-white tracking-tighter drop-shadow-[0_0_50px_rgba(0,217,255,0.4)]">
+                  DRC
+                </h1>
+                <p className="text-xl md:text-2xl font-light text-accent-cyan tracking-widest uppercase mt-4">
+                  Digital Rescue Control
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+
+        </AnimatePresence>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 animate-bounce">
+        <ChevronDown className="text-white/50 w-8 h-8" />
+      </div>
+
     </section>
   );
 }
