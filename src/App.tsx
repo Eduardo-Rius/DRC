@@ -9,6 +9,7 @@ import WhyNow from './components/WhyNow';
 import GlobalInfrastructure from './components/GlobalInfrastructure';
 import WhyDRCWins from './components/WhyDRCWins';
 import PathToBillion from './components/PathToBillion';
+import CinematicEnvironments from './components/CinematicEnvironments';
 import Comparison from './components/Comparison';
 import InvestorPitch from './components/InvestorPitch';
 import Footer from './components/Footer';
@@ -25,8 +26,9 @@ function App() {
       <SmartBand />
       <WhyNow />
       <GlobalInfrastructure />
-      <WhyDRCWins />
       <PathToBillion />
+      <CinematicEnvironments />
+      <WhyDRCWins />
       <Comparison />
       <InvestorPitch />
       <Footer />
