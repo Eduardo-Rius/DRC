@@ -5,6 +5,7 @@ import AIDetection from './components/AIDetection';
 import RescueTimeline from './components/RescueTimeline';
 import CommandCenter from './components/CommandCenter';
 import SmartBand from './components/SmartBand';
+import WhyNow from './components/WhyNow';
 import GlobalInfrastructure from './components/GlobalInfrastructure';
 import Comparison from './components/Comparison';
 import InvestorPitch from './components/InvestorPitch';
@@ -20,6 +21,7 @@ function App() {
       <RescueTimeline />
       <CommandCenter />
       <SmartBand />
+      <WhyNow />
       <GlobalInfrastructure />
       <Comparison />
       <InvestorPitch />
