@@ -1,22 +1,32 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, ShieldAlert, Radio, Globe } from 'lucide-react';
+import { ShieldCheck, ShieldAlert, Radio, Globe, MapPin } from 'lucide-react';
 
 export default function CommandCenter() {
   const alerts = [
     { location: 'Riviera Maya / Hotel Xcaret', status: 'Safe', swimmers: '1,248', type: 'safe' },
     { location: 'Cancun / Water Park', status: 'Safe', swimmers: '2,317', type: 'safe' },
     { location: 'Playa del Carmen / Public Beach', status: 'Submersion Detected', time: '14 sec', type: 'alert' },
-    { location: 'Miami Beach / Public Beach', status: 'Safe', swimmers: '3,842', type: 'safe' },
   ];
 
   const kpis = [
-    { label: 'Lives Protected Today', value: '12,458' },
-    { label: 'Active Facilities', value: '387' },
-    { label: 'AI Monitored Swimmers', value: '45,228' },
+    { label: 'Connected Cameras', value: '14,205' },
+    { label: 'Active Wearables', value: '8,432' },
+    { label: 'Emergency Teams Online', value: '142' },
+    { label: 'Active Lifeguards', value: '450' },
     { label: 'Incidents Prevented', value: '23' },
     { label: 'Network Uptime', value: '99.9%' },
-    { label: 'Avg Response Time', value: '18 sec' },
     { label: 'False Positive Rate', value: '< 0.1%' },
+  ];
+
+  // Map nodes simulation
+  const nodes = [
+    { top: '30%', left: '20%', type: 'safe' },
+    { top: '45%', left: '25%', type: 'safe' },
+    { top: '35%', left: '45%', type: 'safe' },
+    { top: '60%', left: '30%', type: 'alert' },
+    { top: '20%', left: '70%', type: 'safe' },
+    { top: '50%', left: '80%', type: 'safe' },
+    { top: '70%', left: '60%', type: 'safe' },
   ];
 
   return (
@@ -35,17 +45,34 @@ export default function CommandCenter() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Map / Visualization Area */}
-          <div className="lg:col-span-2 glass-panel rounded-2xl p-6 md:p-8 min-h-[550px] flex flex-col relative border-accent-cyan/20 shadow-[0_0_30px_rgba(0,107,255,0.05)]">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2948&auto=format&fit=crop')] bg-cover bg-center opacity-10 rounded-2xl mix-blend-screen" />
-            <div className="absolute inset-0 bg-primary/80 rounded-2xl" />
+          <div className="lg:col-span-2 glass-panel rounded-2xl p-6 md:p-8 min-h-[600px] flex flex-col relative border-accent-cyan/20 shadow-[0_0_30px_rgba(0,107,255,0.05)] overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2948&auto=format&fit=crop')] bg-cover bg-center opacity-20 rounded-2xl mix-blend-screen" />
+            <div className="absolute inset-0 bg-primary/70 rounded-2xl" />
             
-            <div className="relative z-10 w-full flex flex-col h-full">
-              <div className="flex items-center gap-3 mb-8">
+            {/* Simulated Map Nodes */}
+            {nodes.map((node, idx) => (
+              <motion.div 
+                key={`node-${idx}`}
+                className="absolute z-10"
+                style={{ top: node.top, left: node.left }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+              >
+                <div className={`relative flex items-center justify-center ${node.type === 'alert' ? 'animate-pulse' : ''}`}>
+                  <MapPin className={`w-6 h-6 ${node.type === 'alert' ? 'text-accent-red' : 'text-accent-cyan'}`} />
+                  <div className={`absolute w-full h-full rounded-full opacity-50 blur-sm ${node.type === 'alert' ? 'bg-accent-red shadow-[0_0_20px_red]' : 'bg-accent-cyan'}`} />
+                </div>
+              </motion.div>
+            ))}
+            
+            <div className="relative z-20 w-full flex flex-col h-full pointer-events-none">
+              <div className="flex items-center gap-3 mb-8 pointer-events-auto">
                 <Globe className="w-6 h-6 text-accent-cyan" />
                 <h3 className="text-xl font-bold text-white font-mono tracking-widest">NODE_TRACKING_SYS</h3>
               </div>
               
-              <div className="space-y-4 mt-auto">
+              <div className="space-y-4 mt-auto pointer-events-auto">
                 {alerts.map((alert, i) => (
                   <motion.div 
                     initial={{ opacity: 0, x: -20 }}

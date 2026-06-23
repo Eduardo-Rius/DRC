@@ -20,39 +20,45 @@ export default function AIDetection() {
             viewport={{ once: true }}
             className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden border border-white/10 group shadow-[0_0_50px_rgba(0,107,255,0.05)]"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1546022830-671c6d328498?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" />
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1530053969600-caedc5a19eca?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" />
             <div className="absolute inset-0 bg-primary/40" />
             
             {/* Tracking overlays */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative">
+              <div className="relative w-full h-full">
+                {/* Simulated Distress Bounding Box over a swimmer */}
                 <motion.div 
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="w-32 h-48 md:w-48 md:h-64 border-2 border-dashed border-accent-cyan rounded-lg relative bg-accent-cyan/5"
+                  animate={{ scale: [1, 1.05, 1], borderColor: ['rgba(255,59,59,0.5)', 'rgba(255,59,59,1)', 'rgba(255,59,59,0.5)'] }}
+                  transition={{ repeat: Infinity, duration: 1 }}
+                  className="absolute top-[30%] left-[25%] w-[40%] h-[40%] border-2 border-dashed rounded-lg bg-accent-red/10 shadow-[inset_0_0_20px_rgba(255,59,59,0.2)]"
                 >
-                  <div className="absolute -right-2 -top-2 w-3 h-3 rounded-full bg-accent-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" />
-                  <div className="absolute -left-2 -bottom-2 w-3 h-3 rounded-full bg-accent-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" />
+                  <div className="absolute -right-2 -top-2 w-3 h-3 rounded-full bg-accent-red shadow-[0_0_10px_rgba(255,59,59,0.8)]" />
+                  <div className="absolute -left-2 -bottom-2 w-3 h-3 rounded-full bg-accent-red shadow-[0_0_10px_rgba(255,59,59,0.8)]" />
+                  
+                  {/* Skeletal red dots */}
+                  <div className="absolute top-[30%] left-[40%] w-2 h-2 rounded-full bg-accent-red shadow-[0_0_10px_red]" />
+                  <div className="absolute top-[50%] right-[30%] w-2 h-2 rounded-full bg-accent-red shadow-[0_0_10px_red]" />
+                  <div className="absolute bottom-[20%] left-[50%] w-2 h-2 rounded-full bg-accent-red shadow-[0_0_10px_red]" />
                 </motion.div>
                 
-                {/* Lateral panel */}
-                <div className="absolute top-0 left-full ml-4 md:ml-12 bg-primary/95 backdrop-blur-xl border border-accent-red/40 p-4 rounded-xl shadow-[0_0_30px_rgba(255,59,59,0.25)] w-48 md:w-60 hidden sm:block">
+                {/* Lateral panel anchored to the box */}
+                <div className="absolute top-[20%] left-[70%] md:left-[60%] bg-primary/95 backdrop-blur-xl border border-accent-red/60 p-4 rounded-xl shadow-[0_0_30px_rgba(255,59,59,0.4)] w-48 md:w-60 z-20">
                   <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
-                    <div className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
-                    <span className="text-[10px] md:text-xs font-bold text-accent-red uppercase tracking-widest font-mono">Distress Signature Detected</span>
+                    <div className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse shadow-[0_0_10px_red]" />
+                    <span className="text-[10px] md:text-xs font-bold text-accent-red uppercase tracking-widest font-mono">Distress Signature</span>
                   </div>
                   <div className="space-y-3 text-xs md:text-sm font-mono mt-4">
                     <div className="flex justify-between border-b border-white/5 pb-1">
-                      <span className="text-gray-400">Model Conf:</span>
-                      <span className="text-white font-bold">99.2%</span>
+                      <span className="text-gray-400">Level:</span>
+                      <span className="text-accent-red font-bold">CRITICAL / L4</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-1">
-                      <span className="text-gray-400">Z-Axis Depth:</span>
-                      <span className="text-white">2.3 m</span>
+                      <span className="text-gray-400">Model Conf:</span>
+                      <span className="text-white font-bold">99.8%</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Response ETA:</span>
-                      <span className="text-accent-red font-bold">1.8s</span>
+                      <span className="text-accent-red font-bold animate-pulse">1.2s</span>
                     </div>
                   </div>
                 </div>

@@ -4,21 +4,22 @@ import { Activity, Target, ShieldCheck, PlayCircle } from 'lucide-react';
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image / Video Placeholder */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/60 to-primary z-10" />
+      {/* Background Image of a Swimmer */}
+      <div className="absolute inset-0 z-0 bg-primary">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-primary/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-transparent to-primary z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1572528731388-1fa75225dcb5?q=80&w=2940&auto=format&fit=crop" 
-          alt="Underwater view" 
-          className="w-full h-full object-cover opacity-50"
+          src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=2940&auto=format&fit=crop" 
+          alt="Underwater swimmer tracked by AI" 
+          className="w-full h-full object-cover object-center opacity-70 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
         />
         
-        {/* Mock AI Targeting Overlay Box */}
+        {/* Mock AI Targeting Overlay Box directly over the swimmer */}
         <motion.div 
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1, duration: 1.5 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] border border-accent-cyan/20 rounded-lg z-20 flex flex-col justify-between p-4"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[350px] md:w-[280px] md:h-[450px] border border-accent-cyan/40 bg-accent-cyan/5 rounded z-20 flex flex-col justify-between p-2 shadow-[inset_0_0_20px_rgba(0,217,255,0.1)]"
         >
           {/* Corner brackets */}
           <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
@@ -26,14 +27,23 @@ export default function HeroSection() {
           <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
           <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-accent-cyan shadow-[0_0_15px_rgba(0,217,255,0.5)]" />
           
-          <div className="bg-primary/90 backdrop-blur-md border border-accent-cyan/40 text-[10px] md:text-xs text-accent-cyan px-3 py-1.5 inline-flex rounded w-max font-mono shadow-[0_0_10px_rgba(0,217,255,0.2)]">
-            TARGET_ACQUIRED: ID-8942
+          <div className="bg-primary/90 backdrop-blur-md border border-accent-cyan/40 text-[10px] md:text-xs text-accent-cyan px-3 py-1.5 inline-flex rounded w-max font-mono shadow-[0_0_10px_rgba(0,217,255,0.2)] transform -translate-y-8">
+            SWIMMER_ID: 8942
           </div>
-          <div className="flex justify-end mt-auto">
+
+          <div className="flex justify-between mt-auto transform translate-y-8">
+            <div className="bg-accent-blue/20 border border-accent-blue/50 text-accent-cyan text-[10px] px-2 py-1 rounded font-mono">
+              D: 1.8m
+            </div>
              <div className="bg-accent-green/20 border border-accent-green/50 text-accent-green text-[10px] md:text-xs px-3 py-1.5 rounded font-mono shadow-[0_0_15px_rgba(24,255,138,0.4)]">
-              BIOMETRICS: NOMINAL
+              BIO: NORMAL
              </div>
           </div>
+
+          {/* Skeletal tracking points */}
+          <div className="absolute top-[20%] left-[50%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF] -translate-x-1/2" />
+          <div className="absolute top-[40%] left-[30%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF]" />
+          <div className="absolute top-[40%] right-[30%] w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_10px_#00D9FF]" />
         </motion.div>
       </div>
 

@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 
 export default function Environments() {
   const envs = [
-    { title: 'Sports Pools', desc: 'High performance and competition centers.', img: 'https://images.unsplash.com/photo-1519315901367-f34f927e7049?q=80&w=2940&auto=format&fit=crop' },
+    { title: 'Sports Pools', desc: 'High performance and competition centers.', img: 'https://images.unsplash.com/photo-1574627250645-03dc8ec51b14?q=80&w=2940&auto=format&fit=crop' },
     { title: 'Hotels & Resorts', desc: 'Safety and peace of mind for guests.', img: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=2835&auto=format&fit=crop' },
-    { title: 'Water Parks', desc: 'High traffic areas with maximum control.', img: 'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?q=80&w=2940&auto=format&fit=crop' },
+    { title: 'Water Parks', desc: 'High traffic areas with maximum control.', img: 'https://images.unsplash.com/photo-1582202685797-2a6235b37626?q=80&w=2940&auto=format&fit=crop' },
     { title: 'Beaches', desc: 'Open water monitoring in real time.', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop' },
-    { title: 'Lakes & Nature', desc: 'Protection in natural recreational areas.', img: 'https://images.unsplash.com/photo-1439800994963-71ccaace515e?q=80&w=2940&auto=format&fit=crop' },
+    { title: 'Lakes & Nature', desc: 'Protection in natural recreational areas.', img: 'https://images.unsplash.com/photo-1501686419757-cf861f238543?q=80&w=2940&auto=format&fit=crop' },
   ];
 
   return (

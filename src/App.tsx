@@ -1,8 +1,11 @@
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import EmotionalImpact from './components/EmotionalImpact';
 import HowItWorks from './components/HowItWorks';
-import CommandCenter from './components/CommandCenter';
 import AIDetection from './components/AIDetection';
+import RescueTimeline from './components/RescueTimeline';
+import CommandCenter from './components/CommandCenter';
+import SmartBand from './components/SmartBand';
 import Environments from './components/Environments';
 import Comparison from './components/Comparison';
 import InvestorPitch from './components/InvestorPitch';
@@ -13,9 +16,12 @@ function App() {
     <main className="bg-primary min-h-screen text-white font-sans selection:bg-accent-cyan/30">
       <Navbar />
       <HeroSection />
+      <EmotionalImpact />
       <HowItWorks />
-      <CommandCenter />
       <AIDetection />
+      <RescueTimeline />
+      <CommandCenter />
+      <SmartBand />
       <Environments />
       <Comparison />
       <InvestorPitch />
