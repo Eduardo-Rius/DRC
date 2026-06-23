@@ -1,12 +1,11 @@
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import TheOpportunity from './components/TheOpportunity';
-import HowItWorks from './components/HowItWorks';
 import AIDetection from './components/AIDetection';
 import RescueTimeline from './components/RescueTimeline';
 import CommandCenter from './components/CommandCenter';
 import SmartBand from './components/SmartBand';
-import Environments from './components/Environments';
+import GlobalInfrastructure from './components/GlobalInfrastructure';
 import Comparison from './components/Comparison';
 import InvestorPitch from './components/InvestorPitch';
 import Footer from './components/Footer';
@@ -17,12 +16,11 @@ function App() {
       <Navbar />
       <HeroSection />
       <TheOpportunity />
-      <HowItWorks />
       <AIDetection />
       <RescueTimeline />
       <CommandCenter />
       <SmartBand />
-      <Environments />
+      <GlobalInfrastructure />
       <Comparison />
       <InvestorPitch />
       <Footer />
