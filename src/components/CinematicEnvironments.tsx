@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import waterParkImg from '../assets/water_park.png';
 
 export default function CinematicEnvironments() {
   const environments = [
@@ -21,7 +22,7 @@ export default function CinematicEnvironments() {
       title: "Water Parks",
       desc: "High-risk family environments",
       videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-pool-water-with-ripples-40439-large.mp4",
-      poster: "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=2940&auto=format&fit=crop"
+      poster: waterParkImg
     },
     {
       id: "olympic",
