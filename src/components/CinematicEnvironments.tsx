@@ -21,7 +21,7 @@ export default function CinematicEnvironments() {
       title: "Water Parks",
       desc: "High-risk family environments",
       videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-kids-playing-in-a-fountain-with-water-jets-1237-large.mp4",
-      poster: "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?q=80&w=2940&auto=format&fit=crop"
+      poster: "https://images.unsplash.com/photo-1562920618-97cbe22904eb?q=80&w=2940&auto=format&fit=crop"
     },
     {
       id: "olympic",
