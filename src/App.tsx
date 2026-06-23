@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import EmotionalImpact from './components/EmotionalImpact';
+import TheOpportunity from './components/TheOpportunity';
 import HowItWorks from './components/HowItWorks';
 import AIDetection from './components/AIDetection';
 import RescueTimeline from './components/RescueTimeline';
@@ -16,7 +16,7 @@ function App() {
     <main className="bg-primary min-h-screen text-white font-sans selection:bg-accent-cyan/30">
       <Navbar />
       <HeroSection />
-      <EmotionalImpact />
+      <TheOpportunity />
       <HowItWorks />
       <AIDetection />
       <RescueTimeline />
