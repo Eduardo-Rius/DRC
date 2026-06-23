@@ -67,8 +67,8 @@ export default function GlobalInfrastructure() {
               The €10 Billion Opportunity.
             </h2>
             <p className="text-2xl md:text-4xl font-light text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              The world has already built the infrastructure. <br/>
-              <span className="font-bold text-accent-cyan glow-text-cyan">DRC is building the intelligence layer on top of it.</span>
+              The infrastructure already exists. <br/>
+              <span className="font-bold text-accent-cyan glow-text-cyan">DRC monetizes the intelligence layer.</span>
             </p>
           </motion.div>
         </div>

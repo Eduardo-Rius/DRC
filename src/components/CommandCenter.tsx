@@ -1,136 +1,135 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, ShieldAlert, Radio, Globe, MapPin } from 'lucide-react';
+import { ShieldAlert, Users, Camera, Activity, MapPin, AlertTriangle } from 'lucide-react';
 
 export default function CommandCenter() {
-  const alerts = [
-    { location: 'Riviera Maya / Hotel Xcaret', status: 'Safe', swimmers: '1,248', type: 'safe' },
-    { location: 'Cancun / Water Park', status: 'Safe', swimmers: '2,317', type: 'safe' },
-    { location: 'Playa del Carmen / Public Beach', status: 'Submersion Detected', time: '14 sec', type: 'alert' },
-  ];
-
   const kpis = [
-    { label: 'Connected Cameras', value: '14,205' },
-    { label: 'Active Wearables', value: '8,432' },
-    { label: 'Emergency Teams Online', value: '142' },
-    { label: 'Active Lifeguards', value: '450' },
-    { label: 'Incidents Prevented', value: '23' },
-    { label: 'Network Uptime', value: '99.9%' },
-    { label: 'False Positive Rate', value: '< 0.1%' },
-  ];
-
-  // Map nodes simulation
-  const nodes = [
-    { top: '30%', left: '20%', type: 'safe' },
-    { top: '45%', left: '25%', type: 'safe' },
-    { top: '35%', left: '45%', type: 'safe' },
-    { top: '60%', left: '30%', type: 'alert' },
-    { top: '20%', left: '70%', type: 'safe' },
-    { top: '50%', left: '80%', type: 'safe' },
-    { top: '70%', left: '60%', type: 'safe' },
+    { label: "Connected Cameras", value: "14,205", icon: <Camera /> },
+    { label: "Active Wearables", value: "89,430", icon: <Activity /> },
+    { label: "Emergency Teams Online", value: "1,240", icon: <Users /> },
+    { label: "Active Lifeguards", value: "3,400", icon: <ShieldAlert /> },
+    { label: "Incidents Prevented", value: "12,045", icon: <Activity /> },
+    { label: "Network Uptime", value: "99.99%", icon: <Activity /> },
   ];
 
   return (
-    <section id="command-center" className="py-24 bg-primary relative overflow-hidden">
+    <section className="py-40 bg-secondary relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-blue/10 border border-accent-cyan/30 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(0,107,255,0.15)]">
-            <Radio className="w-4 h-4 text-accent-cyan animate-pulse" />
-            <span className="text-xs font-bold text-accent-cyan tracking-widest uppercase">Live Operations</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Global Command Center</h2>
-          <p className="text-gray-400 max-w-2xl text-lg font-light">
-            Centralized operational intelligence. Our platform scales from single high-performance facilities to entire municipal networks, providing unprecedented visibility and orchestrated response.
-          </p>
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter mb-4">
+              Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-cyan glow-text-cyan">Command Center.</span>
+            </h2>
+            <p className="text-xl font-light text-gray-400">
+              Total visibility over global aquatic infrastructure.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Map / Visualization Area */}
-          <div className="lg:col-span-2 glass-panel rounded-2xl p-6 md:p-8 min-h-[600px] flex flex-col relative border-accent-cyan/20 shadow-[0_0_30px_rgba(0,107,255,0.05)] overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2948&auto=format&fit=crop')] bg-cover bg-center opacity-20 rounded-2xl mix-blend-screen" />
-            <div className="absolute inset-0 bg-primary/70 rounded-2xl" />
-            
-            {/* Simulated Map Nodes */}
-            {nodes.map((node, idx) => (
-              <motion.div 
-                key={`node-${idx}`}
-                className="absolute z-10"
-                style={{ top: node.top, left: node.left }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-              >
-                <div className={`relative flex items-center justify-center ${node.type === 'alert' ? 'animate-pulse' : ''}`}>
-                  <MapPin className={`w-6 h-6 ${node.type === 'alert' ? 'text-accent-red' : 'text-accent-cyan'}`} />
-                  <div className={`absolute w-full h-full rounded-full opacity-50 blur-sm ${node.type === 'alert' ? 'bg-accent-red shadow-[0_0_20px_red]' : 'bg-accent-cyan'}`} />
-                </div>
-              </motion.div>
-            ))}
-            
-            <div className="relative z-20 w-full flex flex-col h-full pointer-events-none">
-              <div className="flex items-center gap-3 mb-8 pointer-events-auto">
-                <Globe className="w-6 h-6 text-accent-cyan" />
-                <h3 className="text-xl font-bold text-white font-mono tracking-widest">NODE_TRACKING_SYS</h3>
-              </div>
-              
-              <div className="space-y-4 mt-auto pointer-events-auto">
-                {alerts.map((alert, i) => (
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    key={i}
-                    className={`p-5 rounded-xl border backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all ${
-                      alert.type === 'safe' 
-                        ? 'bg-accent-green/5 border-accent-green/20 hover:bg-accent-green/10' 
-                        : 'bg-accent-red/10 border-accent-red/40 shadow-[0_0_20px_rgba(255,59,59,0.3)] hover:bg-accent-red/20'
-                    }`}
-                  >
-                    <div>
-                      <p className="text-white font-bold tracking-wide">{alert.location}</p>
-                      <p className="text-sm text-gray-400 font-mono mt-1">ID: LOC-{Math.floor(Math.random() * 9000) + 1000}</p>
-                    </div>
-                    <div className="flex items-center gap-8">
-                      {alert.type === 'safe' ? (
-                        <>
-                          <div className="text-right hidden sm:block">
-                            <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">Swimmers</p>
-                            <p className="text-white font-mono text-lg">{alert.swimmers}</p>
-                          </div>
-                          <div className="flex items-center gap-2 bg-accent-green/20 border border-accent-green/30 px-4 py-2 rounded-lg text-accent-green font-bold text-xs font-mono tracking-wider">
-                            <ShieldCheck className="w-4 h-4" /> SECURE
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="text-right hidden sm:block">
-                            <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">Response</p>
-                            <p className="text-accent-red font-mono font-bold text-lg">{alert.time}</p>
-                          </div>
-                          <div className="flex items-center gap-2 bg-accent-red/20 border border-accent-red/40 px-4 py-2 rounded-lg text-accent-red font-bold text-xs font-mono tracking-wider animate-pulse shadow-[0_0_15px_rgba(255,59,59,0.5)]">
-                            <ShieldAlert className="w-4 h-4" /> {alert.status.toUpperCase()}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+        {/* Global Map Display */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative h-[600px] w-full rounded-[2rem] glass-panel border border-white/10 overflow-hidden mb-12 shadow-[0_0_50px_rgba(0,107,255,0.1)]"
+        >
+          {/* Map Image Base */}
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent" />
+
+          {/* Network Online Indicator */}
+          <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md border border-accent-green/30 px-4 py-2 rounded-full flex items-center gap-3">
+            <div className="w-3 h-3 rounded-full bg-accent-green animate-pulse shadow-[0_0_10px_#18FF8A]" />
+            <span className="text-xs font-mono font-bold text-accent-green tracking-widest uppercase">
+              Riviera Maya Network Online
+            </span>
           </div>
 
-          {/* KPIs Sidebar */}
-          <div className="glass-panel rounded-2xl p-8 border-accent-cyan/10 flex flex-col gap-6">
-            <h3 className="text-sm font-bold text-accent-cyan tracking-widest font-mono mb-2 uppercase">System Telemetry</h3>
-            <div className="flex flex-col gap-6 h-full justify-center">
-              {kpis.map((kpi, i) => (
-                <div key={i} className="flex justify-between items-end border-b border-white/5 pb-3">
-                  <span className="text-sm text-gray-400 font-medium">{kpi.label}</span>
-                  <span className="text-xl font-mono font-bold text-white tracking-tight">{kpi.value}</span>
-                </div>
-              ))}
+          {/* Floating Panels: Live Incident */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="absolute top-24 right-8 md:right-12 bg-black/80 backdrop-blur-xl border border-accent-red/50 rounded-2xl p-4 w-72 shadow-[0_0_30px_rgba(255,59,59,0.2)]"
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <AlertTriangle className="w-5 h-5 text-accent-red animate-bounce" />
+              <span className="text-sm font-bold text-accent-red tracking-widest uppercase">Live Incident</span>
             </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-gray-400">LOC:</span>
+                <span className="text-white">Cancun Resort Sector 4</span>
+              </div>
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-gray-400">TYPE:</span>
+                <span className="text-white">Submersion Risk</span>
+              </div>
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-gray-400">CONFIDENCE:</span>
+                <span className="text-accent-red font-bold">99.1%</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Floating Panels: Dispatch */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, x: -50 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 1.5 }}
+            className="absolute bottom-24 left-8 md:left-12 bg-accent-blue/10 backdrop-blur-xl border border-accent-blue/40 rounded-2xl p-4 w-72 shadow-[0_0_30px_rgba(0,107,255,0.2)]"
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <Users className="w-5 h-5 text-accent-cyan" />
+              <span className="text-sm font-bold text-accent-cyan tracking-widest uppercase">Emergency Team Dispatched</span>
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-gray-400">UNIT:</span>
+                <span className="text-white">Lifeguard Alpha</span>
+              </div>
+              <div className="flex justify-between text-xs font-mono">
+                <span className="text-gray-400">ETA:</span>
+                <span className="text-accent-green font-bold">00:12s</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Map Node Ping */}
+          <div className="absolute top-[45%] left-[23%] flex items-center justify-center">
+            <MapPin className="w-6 h-6 text-accent-red absolute z-20" />
+            <div className="absolute w-16 h-16 bg-accent-red/30 rounded-full animate-ping z-10" />
           </div>
+
+        </motion.div>
+
+        {/* Global KPIs */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {kpis.map((kpi, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="glass-panel p-4 rounded-2xl border border-white/5 text-center flex flex-col items-center justify-center"
+            >
+              <div className="text-accent-cyan mb-2 opacity-50">{kpi.icon}</div>
+              <h4 className="text-2xl font-black text-white mb-1">{kpi.value}</h4>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{kpi.label}</p>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );

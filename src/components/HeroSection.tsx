@@ -18,17 +18,17 @@ export default function HeroSection() {
       
       {/* BASE BACKGROUND VIDEO */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/70 z-10 mix-blend-multiply" />
         <video 
           autoPlay 
           loop 
           muted 
           playsInline
           poster="https://images.unsplash.com/photo-1546022830-671c6d328498?q=80&w=2940&auto=format&fit=crop"
-          className="w-full h-full object-cover opacity-60 mix-blend-luminosity scale-105"
+          className="w-full h-full object-cover opacity-80 scale-105"
         >
-          {/* Using a placeholder underwater video. Replace with actual cinematic DRC footage */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-swimming-underwater-in-a-pool-2272-large.mp4" type="video/mp4" />
+          {/* Authentic cinematic underwater swimmer */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-swimmer-underwater-in-a-pool-2273-large.mp4" type="video/mp4" />
         </video>
       </div>
 

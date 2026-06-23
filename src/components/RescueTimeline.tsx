@@ -1,92 +1,97 @@
 import { motion } from 'framer-motion';
-import { Camera, BrainCircuit, Watch, LifeBuoy } from 'lucide-react';
 
 export default function RescueTimeline() {
-  const steps = [
-    {
-      time: 'T-0.0s',
-      title: 'Anomaly Detected',
-      desc: 'Optical sensors identify abnormal kinematic behavior below the surface.',
-      icon: <Camera className="w-6 h-6" />,
-      color: 'text-accent-cyan',
-      bg: 'bg-accent-cyan/10',
-      border: 'border-accent-cyan'
-    },
-    {
-      time: 'T-0.5s',
-      title: 'AI Verification',
-      desc: 'Deep learning models confirm submersion distress signature with 99.8% confidence.',
-      icon: <BrainCircuit className="w-6 h-6" />,
-      color: 'text-accent-blue',
-      bg: 'bg-accent-blue/10',
-      border: 'border-accent-blue'
-    },
-    {
-      time: 'T-1.2s',
-      title: 'Wearable Alert',
-      desc: 'Haptic feedback and exact coordinates delivered to the nearest active lifeguard.',
-      icon: <Watch className="w-6 h-6" />,
-      color: 'text-accent-red',
-      bg: 'bg-accent-red/10',
-      border: 'border-accent-red'
-    },
-    {
-      time: 'T-2.0s',
-      title: 'Lifeguard Dispatched',
-      desc: 'Response protocol initiated before irreversible damage occurs.',
-      icon: <LifeBuoy className="w-6 h-6" />,
-      color: 'text-accent-green',
-      bg: 'bg-accent-green/10',
-      border: 'border-accent-green'
-    }
+  const timeline = [
+    { time: "00:00", event: "Movement anomaly detected", type: "neutral" },
+    { time: "00:04", event: "AI identifies risk", type: "neutral" },
+    { time: "00:07", event: "Confidence reaches 92%", type: "neutral" },
+    { time: "00:09", event: "Alert sent to lifeguard", type: "critical" },
+    { time: "00:14", event: "Response team activated", type: "neutral" },
+    { time: "00:18", event: "Rescue initiated", type: "success" },
   ];
 
   return (
-    <section className="py-24 bg-secondary relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Sub-Second Response Architecture</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
-            While human lifeguards take an average of 10-60 seconds to notice a submerged victim, DRC operates in milliseconds.
-          </p>
+    <section className="py-40 bg-secondary relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Title */}
+        <div className="text-center mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">
+              From Detection to Rescue <span className="text-accent-cyan">in Seconds.</span>
+            </h2>
+            <p className="text-xl text-gray-400 font-light">
+              Because every millisecond matters.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Vertical connecting line */}
+        {/* Timeline */}
+        <div className="relative">
+          {/* Base Vertical Line */}
           <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-1 bg-white/5 md:-translate-x-1/2 rounded-full" />
+          
+          {/* Animated Glow Line */}
+          <motion.div 
+            initial={{ height: "0%" }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 3, ease: "linear" }}
+            className="absolute left-[39px] md:left-1/2 top-0 w-1 bg-gradient-to-b from-accent-cyan via-accent-red to-accent-green md:-translate-x-1/2 rounded-full z-0 drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]" 
+          />
 
-          <div className="space-y-12">
-            {steps.map((step, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Timeline Node */}
-                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center">
-                  <div className={`w-20 h-20 rounded-full bg-primary border-4 border-secondary flex items-center justify-center z-10 ${step.color}`}>
-                    {step.icon}
-                  </div>
-                  <div className={`absolute w-full h-full rounded-full ${step.bg} animate-ping opacity-20`} />
-                </div>
+          <div className="space-y-16">
+            {timeline.map((item, index) => {
+              const isCritical = item.type === 'critical';
+              const isSuccess = item.type === 'success';
+              const colorClass = isCritical ? 'text-accent-red' : isSuccess ? 'text-accent-green' : 'text-accent-cyan';
+              const glowClass = isCritical ? 'shadow-[0_0_20px_rgba(255,59,59,0.5)]' : isSuccess ? 'shadow-[0_0_20px_rgba(24,255,138,0.5)]' : 'shadow-[0_0_20px_rgba(0,217,255,0.3)]';
 
-                {/* Content Box */}
-                <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
-                  <div className={`glass-panel p-6 rounded-2xl border-l-4 ${step.border} shadow-lg`}>
-                    <div className={`font-mono text-xl font-black mb-2 ${step.color}`}>{step.time}</div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                    <p className="text-gray-400 font-light leading-relaxed">{step.desc}</p>
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.4 }}
+                  className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 ${
+                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  }`}
+                >
+                  {/* Node */}
+                  <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center z-10 mt-1 md:mt-0">
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.4 }}
+                      className={`w-20 h-20 rounded-full bg-primary border-4 border-white/10 flex items-center justify-center ${glowClass}`}
+                    >
+                      <span className={`font-mono font-bold text-lg ${colorClass}`}>{item.time}</span>
+                    </motion.div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Content */}
+                  <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${index % 2 === 0 ? 'md:pr-20 text-left md:text-right' : 'md:pl-20 text-left'}`}>
+                    <div className={`glass-panel p-6 rounded-2xl border ${isCritical ? 'border-accent-red/30 bg-accent-red/5' : isSuccess ? 'border-accent-green/30 bg-accent-green/5' : 'border-white/5 hover:border-accent-cyan/30'} transition-all`}>
+                      <h3 className={`text-2xl font-black tracking-tight ${isCritical || isSuccess ? 'text-white' : 'text-gray-300'}`}>
+                        {item.event}
+                      </h3>
+                      {isCritical && <span className="inline-block mt-2 text-xs font-mono font-bold text-accent-red tracking-widest uppercase bg-accent-red/10 px-2 py-1 rounded">Critical Action</span>}
+                      {isSuccess && <span className="inline-block mt-2 text-xs font-mono font-bold text-accent-green tracking-widest uppercase bg-accent-green/10 px-2 py-1 rounded">Protocol Engaged</span>}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
+
       </div>
     </section>
   );
