@@ -12,8 +12,23 @@ export default function CommandCenter() {
   ];
 
   return (
-    <section className="py-40 bg-secondary relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="py-40 bg-gradient-to-b from-[#03172c] via-[#052446] to-[#03172c] relative overflow-hidden">
+      
+      {/* Subtle organic water movement background video at 10% opacity */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[#03172c]/90 z-10" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-full object-cover opacity-10"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-sea-waves-breaking-on-a-sandy-43160-large.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-16">
@@ -23,11 +38,14 @@ export default function CommandCenter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter mb-4">
-              Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-cyan glow-text-cyan">Command Center.</span>
+            <span className="text-xs font-mono font-bold text-accent-cyan tracking-widest uppercase bg-accent-cyan/10 border border-accent-cyan/20 px-3 py-1 rounded-full mb-6 inline-block">
+              GLOBAL COMMAND
+            </span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter mb-4 uppercase">
+              Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-turquoise to-white glow-text-cyan">Command Center.</span>
             </h2>
-            <p className="text-xl font-light text-gray-400">
-              Total visibility over global aquatic infrastructure.
+            <p className="text-xl font-light text-gray-300">
+              Total visibility over global aquatic infrastructure in real time.
             </p>
           </motion.div>
         </div>
@@ -38,15 +56,15 @@ export default function CommandCenter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative h-[600px] w-full rounded-[2rem] glass-panel border border-white/10 overflow-hidden mb-12 shadow-[0_0_50px_rgba(0,107,255,0.1)]"
+          className="relative h-[600px] w-full rounded-[2.5rem] glass-panel border border-accent-cyan/20 overflow-hidden mb-12 shadow-[0_0_80px_rgba(34,211,238,0.1)]"
         >
           {/* Map Image Base */}
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-screen" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/80" />
 
           {/* Network Online Indicator */}
-          <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md border border-accent-green/30 px-4 py-2 rounded-full flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-accent-green animate-pulse shadow-[0_0_10px_#18FF8A]" />
+          <div className="absolute top-6 left-6 bg-primary/80 backdrop-blur-md border border-accent-green/30 px-4 py-2 rounded-full flex items-center gap-3">
+            <div className="w-3.5 h-3.5 rounded-full bg-accent-green animate-pulse shadow-[0_0_10px_#34D399]" />
             <span className="text-xs font-mono font-bold text-accent-green tracking-widest uppercase">
               Riviera Maya Network Online
             </span>
@@ -58,7 +76,7 @@ export default function CommandCenter() {
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 1 }}
-            className="absolute top-24 right-8 md:right-12 bg-black/80 backdrop-blur-xl border border-accent-red/50 rounded-2xl p-4 w-72 shadow-[0_0_30px_rgba(255,59,59,0.2)]"
+            className="absolute top-24 right-8 md:right-12 bg-primary/95 backdrop-blur-xl border border-accent-red/50 rounded-2xl p-5 w-72 shadow-[0_0_30px_rgba(248,113,113,0.2)]"
           >
             <div className="flex items-center gap-2 mb-3">
               <AlertTriangle className="w-5 h-5 text-accent-red animate-bounce" />
@@ -86,10 +104,10 @@ export default function CommandCenter() {
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 1.5 }}
-            className="absolute bottom-24 left-8 md:left-12 bg-accent-blue/10 backdrop-blur-xl border border-accent-blue/40 rounded-2xl p-4 w-72 shadow-[0_0_30px_rgba(0,107,255,0.2)]"
+            className="absolute bottom-24 left-8 md:left-12 bg-primary/95 backdrop-blur-xl border border-accent-cyan/40 rounded-2xl p-5 w-72 shadow-[0_0_30px_rgba(34,211,238,0.2)]"
           >
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-5 h-5 text-accent-cyan" />
+              <Users className="w-5 h-5 text-accent-cyan animate-pulse" />
               <span className="text-sm font-bold text-accent-cyan tracking-widest uppercase">Emergency Team Dispatched</span>
             </div>
             <div className="space-y-2">
@@ -121,11 +139,11 @@ export default function CommandCenter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-panel p-4 rounded-2xl border border-white/5 text-center flex flex-col items-center justify-center"
+              className="glass-panel p-5 rounded-2xl border border-white/5 text-center flex flex-col items-center justify-center hover:border-accent-cyan/30 transition-all duration-300 shadow-md"
             >
-              <div className="text-accent-cyan mb-2 opacity-50">{kpi.icon}</div>
+              <div className="text-accent-cyan mb-2 opacity-70">{kpi.icon}</div>
               <h4 className="text-2xl font-black text-white mb-1">{kpi.value}</h4>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{kpi.label}</p>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">{kpi.label}</p>
             </motion.div>
           ))}
         </div>

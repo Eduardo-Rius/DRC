@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #020B14;
-  --color-secondary: #04111F;
-  --color-accent-cyan: #00D9FF;
-  --color-accent-blue: #006BFF;
-  --color-accent-green: #18FF8A;
-  --color-accent-red: #FF3B3B;
+  --color-primary: #03172c;
+  --color-secondary: #052446;
+  --color-accent-cyan: #22D3EE;
+  --color-accent-blue: #0ea5e9;
+  --color-accent-green: #34d399;
+  --color-accent-red: #f87171;
+  
+  --color-turquoise: #06b6d4;
+  --color-aqua: #67e8f9;
+  --color-sky-cyan: #0ea5e9;
   
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -19,12 +23,25 @@ body {
 }
 
 .glass-panel {
-  background: rgba(4, 17, 31, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 217, 255, 0.15);
+  background: rgba(5, 36, 70, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
 .glow-text-cyan {
-  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+  text-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
 }
+
+.glow-text-red {
+  text-shadow: 0 0 15px rgba(248, 113, 113, 0.6);
+}
+
+.glow-text-green {
+  text-shadow: 0 0 15px rgba(52, 211, 153, 0.6);
+}
+
+.ocean-bg {
+  background: linear-gradient(180deg, #03172c 0%, #052a50 50%, #03172c 100%);
+}
+

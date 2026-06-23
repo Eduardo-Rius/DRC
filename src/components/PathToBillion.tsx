@@ -42,7 +42,7 @@ export default function PathToBillion() {
 
   return (
     <section className="py-32 bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,107,255,0.05)_0%,_var(--color-primary)_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(34,211,238,0.1)_0%,_transparent_75%)] pointer-events-none" />
       
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -57,9 +57,9 @@ export default function PathToBillion() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-blue/10 border border-accent-blue/30 mb-6 backdrop-blur-md">
               <span className="text-xs font-bold text-accent-blue tracking-widest uppercase">Path to €1 Billion</span>
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter uppercase">
               From First Deployment <br />
-              <span className="text-gray-500">To Global Standard.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-turquoise to-white glow-text-cyan">To Global Standard.</span>
             </h2>
           </motion.div>
         </div>
@@ -121,7 +121,7 @@ export default function PathToBillion() {
             <h3 className="text-3xl md:text-5xl font-light text-white leading-tight mb-12">
               Every deployment strengthens the network.<br/>
               Every network increases the moat.<br/>
-              <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-cyan glow-text-cyan block mt-4">
+              <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-turquoise to-white glow-text-cyan block mt-4 uppercase">
                 Every moat increases enterprise value.
               </span>
             </h3>
@@ -129,7 +129,7 @@ export default function PathToBillion() {
             {/* SVG Exponential Curve */}
             <div className="relative h-[250px] w-full mt-12">
               {/* Gradient fill under the curve */}
-              <div className="absolute inset-0 bg-gradient-to-t from-accent-cyan/20 to-transparent clip-path-curve opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent-cyan/10 to-transparent clip-path-curve opacity-50" />
               
               <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
                 {/* Axes */}
@@ -147,14 +147,14 @@ export default function PathToBillion() {
                   whileInView={{ pathLength: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 2, ease: "easeIn" }}
-                  className="drop-shadow-[0_0_15px_rgba(0,217,255,0.8)]"
+                  className="drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]"
                 />
                 
                 {/* Gradient Def */}
                 <defs>
                   <linearGradient id="cyan-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#006BFF" />
-                    <stop offset="100%" stopColor="#00D9FF" />
+                    <stop offset="0%" stopColor="#06B6D4" />
+                    <stop offset="100%" stopColor="#22D3EE" />
                   </linearGradient>
                 </defs>
               </svg>

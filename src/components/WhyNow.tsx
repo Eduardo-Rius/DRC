@@ -41,8 +41,8 @@ export default function WhyNow() {
         <div className="sticky top-0 left-0 w-full h-screen overflow-hidden bg-primary flex items-center justify-center">
           
           {/* Background Oceanic Waves */}
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1496284427489-f59461d8a8e6?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-luminosity" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/90" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1496284427489-f59461d8a8e6?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/80" />
 
           {/* Intro Text */}
           <motion.div 
@@ -109,8 +109,8 @@ export default function WhyNow() {
             <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 mb-8 backdrop-blur-md">
               <span className="text-sm font-bold text-accent-cyan tracking-widest uppercase">The Inevitable Evolution</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black text-white leading-tight tracking-tighter">
-              A Perfect <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-cyan glow-text-cyan">Storm.</span>
+            <h2 className="text-5xl md:text-8xl font-black text-white leading-tight tracking-tighter uppercase">
+              A Perfect <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-turquoise to-white glow-text-cyan">Storm.</span>
             </h2>
             <p className="mt-8 text-xl md:text-3xl text-gray-300 font-light max-w-3xl mx-auto">
               DRC is the exact platform at the exact right moment in history.

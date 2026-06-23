@@ -76,8 +76,8 @@ export default function WhyDRCWins() {
   ];
 
   return (
-    <section className="py-40 bg-secondary relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(0,217,255,0.05)_0%,_var(--color-secondary)_70%)] pointer-events-none" />
+    <section className="py-40 bg-gradient-to-b from-[#03172c] via-[#052446] to-[#03172c] relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(34,211,238,0.08)_0%,_transparent_70%)] pointer-events-none" />
       
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         

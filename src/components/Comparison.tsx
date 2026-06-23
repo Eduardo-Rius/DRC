@@ -19,7 +19,7 @@ export default function Comparison() {
   ];
 
   return (
-    <section className="py-24 bg-secondary relative">
+    <section className="py-24 bg-gradient-to-b from-[#03172c] via-[#052446] to-[#03172c] relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Redefining the Standard</h2>

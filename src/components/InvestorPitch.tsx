@@ -3,9 +3,9 @@ import { ArrowRight, Download, ShieldCheck } from 'lucide-react';
 
 export default function InvestorPitch() {
   return (
-    <section className="py-32 bg-black relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-[#03172c] via-[#052446] to-[#03172c] relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,107,255,0.15)_0%,_transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(34,211,238,0.2)_0%,_transparent_75%)]" />
       
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10 text-center">
         
@@ -14,18 +14,18 @@ export default function InvestorPitch() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-12 md:p-20 rounded-[3rem] border border-accent-cyan/20 shadow-[0_0_100px_rgba(0,107,255,0.15)] relative overflow-hidden group hover:border-accent-cyan/40 transition-colors duration-500"
+          className="glass-panel p-12 md:p-20 rounded-[3rem] border border-accent-cyan/20 shadow-[0_0_100px_rgba(34,211,238,0.15)] relative overflow-hidden group hover:border-accent-cyan/40 transition-colors duration-500"
         >
           {/* Animated glow inside the card */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 mb-8">
             <ShieldCheck className="w-8 h-8 text-accent-cyan" />
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6 uppercase">
             The Future of Aquatic Safety <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-cyan glow-text-cyan">Starts Now.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-turquoise to-white glow-text-cyan">Starts Now.</span>
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">

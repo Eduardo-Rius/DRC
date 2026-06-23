@@ -2,8 +2,8 @@ import { ShieldAlert } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="relative py-20 overflow-hidden bg-secondary border-t border-white/5">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-screen" />
+    <footer className="relative py-20 overflow-hidden bg-gradient-to-b from-[#052446] to-[#03172c] border-t border-white/5">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=2787&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-screen" />
       <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center">
@@ -14,15 +14,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-          A SAFER WORLD <span className="text-accent-blue">STARTS NOW</span>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight uppercase">
+          A SAFER WORLD <span className="text-accent-cyan glow-text-cyan">STARTS NOW</span>
         </h2>
-        <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+        <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-light">
           Join us in revolutionizing aquatic safety and protecting millions of lives globally.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
-          <button className="px-8 py-4 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan text-white font-bold text-base hover:shadow-[0_0_30px_rgba(0,217,255,0.4)] transition-all duration-300">
+          <button className="px-8 py-4 rounded-full bg-accent-cyan text-primary font-bold text-base hover:bg-white shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all duration-300">
             Request Private Demo
           </button>
           <button className="px-8 py-4 rounded-full bg-transparent border border-accent-cyan/50 text-accent-cyan font-bold text-base hover:bg-accent-cyan/10 transition-all duration-300">
